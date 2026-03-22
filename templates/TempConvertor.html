@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Unit Convertor</title>
+  </head>
+  <body>
+        <a href = '/length'><button type="button" id="LengthBTN">Length</button></a>
+        <a href = '/weight'><button type="button" id="WeightBTN">Weight</button></a>
+        <a href = '/temp'><button type="button" id="TempBTN">Temperature</button></a>
+        <br>
+
+        <label for = 'lengthArea'>Enter Temperature to covert</label> <br>
+        <input type = 'number' id = 'lengthArea' name = 'lengthArea' min = '1' /><br>
+       
+        <label for = 'convertFromArea'>Unit to convert from</label> <br>
+        <select id = 'from_unit'>
+            <option value = 'celcius'>Celcius</option>
+            <option value = 'fahrenheit'>Fahrenheit</option>
+            <option value = 'kelvin'>Kelvin</option>
+        
+        </select><br><br>
+       
+        <label for = 'convertToArea'>Unit to Convert to</label> <br>
+        <select id = 'to_unit'>
+            <option value = 'celcius'>Celcius</option>
+            <option value = 'fahrenheit'>Fahrenheit</option>
+            <option value = 'kelvin'>Kelvin</option>
+        
+        </select><br><br>
+
+        <button type = 'button' id = 'convert'>Convert</button><br>
+
+
+        <!-- JavaScript  -->
+        <script>    
+            document.getElementById("convert").onclick = function(){                                                                          
+             let fromUnit = document.getElementById("from_unit").value;
+            let toUnit = document.getElementById("to_unit").value;
+            let value = document.getElementById("lengthArea").value;
+
+        fetch('/convert/temp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ value: value, from_unit: fromUnit, to_unit: toUnit })
+            })
+            .then(res => res.json())
+            .then(data => { 
+                window.location.href ='/result?result=' + data.result;
+
+            });
+        };
+          </script>
+
+  </body>
+  </html>
+
+
+
+
+
+
+

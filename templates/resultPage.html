@@ -1,0 +1,35 @@
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Unit Convertor</title>
+  </head>
+  <body>
+        <a href = '/length'><button type="button" id="LengthBTN">Length</button></a>
+        <a href = '/weight'><button type="button" id="WeightBTN">Weight</button></a>
+        <a href = '/temp'><button type="button" id="TempBTN">Temperature</button></a>
+        <br>
+
+
+        <h3 id="resultText">Result of your calculation</h3>
+        <br>
+
+        <a href = '/length'><button id="resetBTN">Reset</button></a>
+
+    
+<!-- JavaScript  -->
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const result = params.get('result');
+      document.getElementById("resultText").innerText = "Result: " + result;
+  </script>
+
+  </body>
+  </html>
+
+
+
+
+
+
+
